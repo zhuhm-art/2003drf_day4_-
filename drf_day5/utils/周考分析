@@ -1,0 +1,36 @@
+1. ListSerializer的作用是什么,如何完成的。  2
+
+~~~markdown
+1. 由于DRF并没有提供同时修改多个对象的功能  所以想要实现修改多个对象，需要借助于listSerializer
+2. 在ListSerializer重写了update方法，将前端传递过来的要修改的多个对象，从修改多个转变成遍历修改，每次修改该一个，调用ModelSerializer的update方法完成修改
+~~~
+
+
+
+2. GenericAPIView为什么可以与mixins工具类联合使用。   1
+
+~~~markdown
+`GenericAPIView`提供了`mixins`工具类操作API所需要的方法
+get_queryset  get_object  get_serializer
+提供了两个类属性  queryset  与  serializer_class
+~~~
+
+
+
+3. mixins工具类提供了哪些API操作（文字描述即可）。     1
+
+>
+
+4. viewsets视图集的核心作用是什么，GenericViewSet与ViewSet的区别是什么。    3
+
+> 可以提供非标准的Http操作   可以让开发者自定义请求所匹配的视图函数   get   def user_login  as_view("get":"user_login")
+>
+> 都继承了viewsetMIxin
+>
+> GenericViewSet  --> GenericAPIView   可以与mixins工具类共同使用
+>
+> ViewSet --> APIView
+
+5. 请描述DRF中的视图继承关系，文字画图均可。    3
+
+> Reset_framework.view
